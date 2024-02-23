@@ -1,6 +1,15 @@
 # encoding: cp1251
 import flet as ft
 
+
+
+
+
+#TODO переделать порядок и содержание тем
+#TODO закончить главу квантовые явления
+#TODO к 29 квантовые, к 1марта часть механики
+
+
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
 
@@ -11,10 +20,10 @@ def main(page: ft.Page):
 
     #Механические явления
     me_1 = ft.TextButton("1. Механическое движение. Траектория. Путь. Перемещение",on_click=lambda _: page.go("/mech/movement"))
-    me_2 = ft.TextButton("2. Равномерное прямолинейное движение",on_click=lambda _: page.go("/mech/ravnomermove"))
-    me_3 = ft.TextButton("3. Скорость",on_click=lambda _: page.go("/mech/speed"))
-    me_4 = ft.TextButton("4. Ускорение",on_click=lambda _: page.go("/mech/acsell"))
-    me_5 = ft.TextButton("5. Равноускоренное прямолинейное движение",on_click=lambda _: page.go("/mech/ravnouscormove"))
+    me_2 = ft.TextButton("2. Скорость. Ускорение. Равноускоренное прямолинейное движение. Равномерное прямолинейное движение",on_click=lambda _: page.go("/mech/speed"))
+    me_3 = ft.TextButton("3. ",on_click=lambda _: page.go("/mech/speed"))
+    me_4 = ft.TextButton("4. ",on_click=lambda _: page.go("/mech/acsell"))
+    me_5 = ft.TextButton("5. ",on_click=lambda _: page.go("/mech/ravnouscormove"))
     me_6 = ft.TextButton("6. Свободное падение",on_click=lambda _: page.go("/mech/freefall"))
     me_7 = ft.TextButton("7. Движение по окружности",on_click=lambda _: page.go("/mech/cirlemove"))
     me_8 = ft.TextButton("8. Масса. Плотность вещества",on_click=lambda _: page.go("/mech/mass"))
@@ -138,8 +147,11 @@ def main(page: ft.Page):
                         ft.Text("Механическое движение - изменение положения тела(или частей тела) относительно других тел с течением времени."),
                         ft.Text("Основная задача механики - определить положение тела в любой момент времени."),
                         ft.Text("Кинематика - раздел механики, в котором движение тел рассматривается без выяснения причин, его вызывающих. Кинематика отвечает на вопрос: как движется тело?"),
-                        ft.Text("Траектория - линия, вдоль которой движется материальная точка."),
+                        ft.Text("Траектория - линия, вдоль которой движется материальная точка. На рисунке ниже, выделена синим цветом"),
                         ft.Text("Материальная точка - это тело, размерами которого в данных условиях можно пренебречь."),
+                        ft.Text("Путь - длина траектории, измеряеться в метрах"),
+                        ft.Text("Перемещение - вектор, проведенный из начальной в конечную точку движения. На рисунке отмечен зеленым цветом"),
+                        ft.Image(src=f"me_1_1.png"),
 
                         ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
@@ -307,4 +319,4 @@ def main(page: ft.Page):
     page.on_view_pop = view_pop
     page.go(page.route)
 
-ft.app(target=main)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets")
