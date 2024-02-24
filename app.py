@@ -7,9 +7,9 @@ import flet as ft
 
 #TODO к 29 квантовые, к 1марта часть механики
 
-
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
+    print(str(page.client_ip)+" connected")
 
     th_mech = ft.TextButton("1. Механические явления",on_click=lambda _: page.go("/mech"))
     th_heat = ft.TextButton("2. Тепловые явления",on_click=lambda _: page.go("/heat"))
@@ -90,11 +90,12 @@ def main(page: ft.Page):
     def route_change(route):
         page.views.clear()
         if page.route == "/":
+            print(str(page.client_ip) + " went to /")
             page.views.append(
             ft.View(
                 "/",
                 [
-                    ft.AppBar(title=ft.Text("Темы"),bgcolor=ft.colors.SURFACE_VARIANT),
+                    ft.AppBar(title=ft.Text("Разделы"),bgcolor=ft.colors.SURFACE_VARIANT),
                     th_mech,
                     th_heat,
                     th_elect,
@@ -104,6 +105,7 @@ def main(page: ft.Page):
             )
         )
         elif page.route == "/mech":
+            print(str(page.client_ip) + " went to /mech")
             page.views.append(
                 ft.View(
                     "/mech",
@@ -140,6 +142,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/mech/movement":
+            print(str(page.client_ip) + " went to /mech/movement")
             page.views.append(
                 ft.View(
                     "/mech/movement",
@@ -161,6 +164,7 @@ def main(page: ft.Page):
             )
 
         elif page.route == "/heat":
+            print(str(page.client_ip) + " went to /heat")
             page.views.append(
                 ft.View(
                     "/heat",
@@ -185,6 +189,7 @@ def main(page: ft.Page):
 
 
         elif page.route == "/elect":
+            print(str(page.client_ip) + " went to /elect")
             page.views.append(
                 ft.View(
                     "/elect",
@@ -218,6 +223,7 @@ def main(page: ft.Page):
 
 
         elif page.route == "/kvant":
+            print(str(page.client_ip) + " went to /kvant")
             page.views.append(
                 ft.View(
                     "/kvant",
@@ -233,6 +239,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/rad":
+            print(str(page.client_ip) + " went to /rad")
             page.views.append(
                 ft.View(
                     "/kvant/rad",
@@ -249,6 +256,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/atom":
+            print(str(page.client_ip) + " went to /kvant/atom")
             page.views.append(
                 ft.View(
                     "/kvant/atom",
@@ -261,43 +269,52 @@ def main(page: ft.Page):
                         ft.Text("Далее, Резерфорд провел ряд опытов по исследованию состава и строения атомов. На картинке С = свинцовый сосуд; Р = радиоктивное вещество, излучаещее альфа-частицы. Э = экран, покрытый веществом, которое создаёт вспышки при контакте с альфа-частицами, и эти вспышки видны через микроскоп М.(Такой метод регистрации частиц называют методом сцинтилляций)."),
                         ft.Image(src=f"kv_2_3.png"),
                         ft.Text("Вся эта установка находиться в сосуде без воздуха(чтобы альфа-частицы не сталкивались с молекулами воздуха.)"),
-                        ft.Text("Если препятствий больше нет, то на экране Э, будет одно маленькое пятнышко, а если будут(например фольга Ф из исследуемого металла), то альфа частицы пассеиваються по всем углам φ"),
-
-
-
-
+                        ft.Text("Если препятствий больше нет, то на экране Э, будет одно маленькое пятнышко, а если будут(например фольга Ф из исследуемого металла), то альфа частицы рассеиваються по всем углам φ (фи)"),
+                        ft.Text("По результатам, Резерфорд предположил, что заряд в малом пространстве создаёт чрезвычайно сильное поле, и сделал схематичный рисунок модели атома"),
+                        ft.Image(src=f"kv_2_4.png"),
                         ft.TextButton("К темам", on_click=lambda _: page.go("/kvant")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
         elif page.route == "/kvant/insideatom":
+            print(str(page.client_ip) + " went to /kvant/insideatom")
             page.views.append(
                 ft.View(
                     "/kvant/insideatom",
                     [
                         ft.AppBar(title=ft.Text("Состав атомного ядра"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.Text(""),
-
+                        ft.Text("Когда открыли нейтрон(1932г.), российский физик Дмитрий Двитреевич Иваненко и немецкий физик Вернер Гейзенберг предложили протонно-нейтронную модель ядер, согласно которой ядро состоит из протонов и нейтронов. Позже эту модель потвердили эксперементально."),
+                        ft.Text("Протоны и нейтроны называют нуклонами (от nucleus - ядро)"),
+                        ft.Text("A = массовое число (кол-во нуклонов в ядре)"),
+                        ft.Text("Z = зарядное число (кол-во протонов в ядре)"),
+                        ft.Text("N = число нейтронов" ),
+                        ft.Text("Изотопы - атомы одно и того же химического элемента, различающиеся массой атомных ядер"),
+                        ft.Image(src=f"kv_3_1.png"),
                         ft.TextButton("К темам", on_click=lambda _: page.go("/kvant")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
         elif page.route == "/kvant/nuclear":
+            print(str(page.client_ip) + " went to /kvant/nuclear")
             page.views.append(
                 ft.View(
                     "/kvant/nuclear",
                     [
                         ft.AppBar(title=ft.Text("Ядерные реакции"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.Text(""),
-
+                        ft.Text("Есть 2 реакции, которые изучают в 9 классе: Альфа и Бета распады."),
+                        ft.Text("Начнём с Альфа-распада. При нем исходное ядро распадается, излучая гелий(A=4,Z=2), и превращается в другой элемент"),
+                        ft.Image(src=f"kv_4_1.png"),
+                        ft.Text("А при бета распаде из исходного атома вылеталет электрон, повышая его заряд на 1"),
+                        ft.Image(src=f"kv_4_2.png"),
                         ft.TextButton("К темам", on_click=lambda _: page.go("/kvant")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
         else:
+            print(str(page.client_ip) + " got 404")
             page.views.append(
                 ft.View(
                     "/404",
@@ -313,6 +330,7 @@ def main(page: ft.Page):
 
         '''
         elif page.route == "/name":
+            print(str(page.client_ip) + " went to /name")
             page.views.append(
                 ft.View(
                     "/name",
@@ -336,4 +354,4 @@ def main(page: ft.Page):
     page.on_view_pop = view_pop
     page.go(page.route)
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets")
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets", port="6660")
