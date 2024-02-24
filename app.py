@@ -1,15 +1,35 @@
-
 import flet as ft
 
+#INFO
+'''
+Версии
+Python 3.11
+Flet 0.19.0
 
+Если ничего не редактировать, то после запуска должен открыться браузер на странице 127.0.0.1:7000
+В конце фаила есть строчка, если убрать 'view=ft.AppView.WEB_BROWSER', то будет открываться как обычное 
+приложение, иначе - как веб-приложение. Если будете уберать, имейте в ввиду, что функция 
+page.client_ip будет вызывать ошибку. Чтобы это исправить, замените все 'str(page.client_ip)'
+на IPplaceholder
 
+Документация flet
+https://flet.dev/docs/
 
+Это же приложение на Github:
+https://github.com/Secretman01/EasyToUnderstand-Physics
 
-#TODO к 29 квантовые, к 1марта часть механики
+Учебный материал взят из учебников по физике Перышкина и Иванова 8 и 9 классов
+'''
+
+#Конфигурация
+port = 7000 #Порт для приложения
+
 
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
     print(str(page.client_ip)+" connected")
+
+    IPplaceholder = "user"
 
     th_mech = ft.TextButton("1. Механические явления",on_click=lambda _: page.go("/mech"))
     th_heat = ft.TextButton("2. Тепловые явления",on_click=lambda _: page.go("/heat"))
@@ -85,8 +105,6 @@ def main(page: ft.Page):
     kv_4 = ft.TextButton("4. Ядерные реакции",on_click=lambda _: page.go("/kvant/nuclear"))
 
 
-#Тут отвратительный код, но времени нет
-#TODO переделать код страниц
     def route_change(route):
         page.views.clear()
         if page.route == "/":
@@ -156,12 +174,12 @@ def main(page: ft.Page):
                         ft.Text("Путь - длина траектории, измеряеться в метрах"),
                         ft.Text("Перемещение - вектор, проведенный из начальной в конечную точку движения. На рисунке отмечен зеленым цветом"),
                         ft.Image(src=f"me_1_1.png"),
-
                         ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
+
 
         elif page.route == "/heat":
             print(str(page.client_ip) + " went to /heat")
@@ -181,6 +199,162 @@ def main(page: ft.Page):
                         he_9,
                         he_10,
                         he_11,
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/bodies":
+            print(str(page.client_ip) + " went to /heat/bodies")
+            page.views.append(
+                ft.View(
+                    "/heat/bodies",
+                    [
+                        ft.AppBar(title=ft.Text("Строение вещества. Модели строения газа, жидкости и твердого тела"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("МКТ - молекулярно-кинетическая теория. Она объясняет свойства различных веществ и целый класс физических явлений. В ней есть 3 основных положения:"),
+                        ft.Text("1. Все вещества состоят из частиц(молекул, атомов), между которыми существуют промежутки."),
+                        ft.Text("2. Все частицы вещества находятся в непрерывном хаотическом(беспорядочном) движении."),
+                        ft.Text("3. Частицы вещества взаимодействуют друг с другом силами притяжения и отталкивания."),
+                        ft.Text("Первое положение доказывается тем, что тела могут сжиматься и расширятся, второе - диффузия и броуновское движение, а третьего - упругие свойства тел"),
+                        ft.Text("У каждого вещества есть 3 агрегатных состояния(некоторые из них просто так не увидишь, но они есть):"),
+                        ft.Text("Твердое",size=20),
+                        ft.Image(src=f"he_1_1.jpg"),
+                        ft.Text(""),
+                        ft.Text("Жидкое", size=20),
+                        ft.Image(src=f"he_1_2.jpg"),
+                        ft.Text(""),
+                        ft.Text("Газообразное", size=20),
+                        ft.Image(src=f"he_1_3.jpg"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/diffusion":
+            print(str(page.client_ip) + " went to /heat/diffusion")
+            page.views.append(
+                ft.View(
+                    "/heat/diffusion",
+                    [
+                        ft.AppBar(title=ft.Text("Тепловое движение атомов и молекул. Связь температуры вещества со скоростью хаотического движения частиц. Броуновское движение. Диффузия"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/equality":
+            print(str(page.client_ip) + " went to /heat/equality")
+            page.views.append(
+                ft.View(
+                    "/heat/equality",
+                    [
+                        ft.AppBar(title=ft.Text("Тепловое равновесие"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/energy":
+            print(str(page.client_ip) + " went to /heat/energy")
+            page.views.append(
+                ft.View(
+                    "/heat/energy",
+                    [
+                        ft.AppBar(title=ft.Text("Внутренняя энергия. Работа и теплопередача как способы изменения внутренней энергии"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/transfer":
+            print(str(page.client_ip) + " went to /heat/transfer")
+            page.views.append(
+                ft.View(
+                    "/heat/transfer",
+                    [
+                        ft.AppBar(title=ft.Text("Виды теплопередачи: теплопроводность, конвекция, излучение"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/quantity":
+            print(str(page.client_ip) + " went to /heat/quantity")
+            page.views.append(
+                ft.View(
+                    "/heat/quantity",
+                    [
+                        ft.AppBar(title=ft.Text("Количество теплоты. Удельная теплоемкость"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/saveenergylaw":
+            print(str(page.client_ip) + " went to /heat/saveenergylaw")
+            page.views.append(
+                ft.View(
+                    "/heat/saveenergylaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон сохранения энергии в тепловых процессах"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/steam":
+            print(str(page.client_ip) + " went to /heat/steam")
+            page.views.append(
+                ft.View(
+                    "/heat/steam",
+                    [
+                        ft.AppBar(title=ft.Text("Испарение и конденсация. Кипение жидкости"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/humidity":
+            print(str(page.client_ip) + " went to /heat/humidity")
+            page.views.append(
+                ft.View(
+                    "/heat/humidity",
+                    [
+                        ft.AppBar(title=ft.Text("Влажность воздуха"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/smelting":
+            print(str(page.client_ip) + " went to /heat/smelting")
+            page.views.append(
+                ft.View(
+                    "/heat/smelting",
+                    [
+                        ft.AppBar(title=ft.Text("Плавление и кристаллизация"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/heat/magic":
+            print(str(page.client_ip) + " went to /heat/magic")
+            page.views.append(
+                ft.View(
+                    "/heat/magic",
+                    [
+                        ft.AppBar(title=ft.Text("Преобразование энергии в тепловых машинах"), bgcolor=ft.colors.SURFACE_VARIANT),
+
                         ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -314,7 +488,7 @@ def main(page: ft.Page):
                 )
             )
         else:
-            print(str(page.client_ip) + " got 404")
+            print(str(page.client_ip) + " got 404 when tried to get to " + page.route)
             page.views.append(
                 ft.View(
                     "/404",
@@ -337,7 +511,7 @@ def main(page: ft.Page):
                     [
                         ft.AppBar(title=ft.Text("theme"), bgcolor=ft.colors.SURFACE_VARIANT),
 
-                        ft.TextButton("К ", on_click=lambda _: page.go("/")),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
@@ -354,4 +528,4 @@ def main(page: ft.Page):
     page.on_view_pop = view_pop
     page.go(page.route)
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets", port="6660")
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, assets_dir="assets", port=str(port))
