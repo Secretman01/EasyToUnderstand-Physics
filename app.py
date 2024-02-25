@@ -4,13 +4,11 @@ import flet as ft
 '''
 Версии
 Python 3.11
-Flet 0.19.0
+Flet 0.19.0+
 
 Если ничего не редактировать, то после запуска должен открыться браузер на странице 127.0.0.1:7000
 В конце фаила есть строчка, если убрать 'view=ft.AppView.WEB_BROWSER', то будет открываться как обычное 
-приложение, иначе - как веб-приложение. Если будете уберать, имейте в ввиду, что функция 
-page.client_ip будет вызывать ошибку. Чтобы это исправить, замените все 'str(page.client_ip)'
-на IPplaceholder. Ну или удалить все строчки, которые начинаються с print.
+приложение, иначе - как веб-приложение.
 
 Документация flet
 https://flet.dev/docs/
@@ -27,9 +25,6 @@ port = 7000 #Порт для приложения
 
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
-    print(str(page.client_ip)+" connected")
-
-    IPplaceholder = "user"
 
     th_mech = ft.TextButton("1. Механические явления",on_click=lambda _: page.go("/mech"))
     th_heat = ft.TextButton("2. Тепловые явления",on_click=lambda _: page.go("/heat"))
@@ -82,7 +77,7 @@ def main(page: ft.Page):
     el_3 = ft.TextButton("3. Закон сохранения электрического заряда",on_click=lambda _: page.go("/elect/electrosavelaw"))
     el_4 = ft.TextButton("4. Электрическое поле. Действие электрического поля на электрические заряды. Проводники и диэлектрики",on_click=lambda _: page.go("/elect/field"))
     el_5 = ft.TextButton("5. Постоянный электрический ток. Сила тока. Напряжение",on_click=lambda _: page.go("/elect/tok"))
-    el_6 = ft.TextButton("6. Электрическое сопротивление",on_click=lambda _: page.go("/elect/"))
+    el_6 = ft.TextButton("6. Электрическое сопротивление",on_click=lambda _: page.go("/elect/resistance"))
     el_7 = ft.TextButton("7. Закон Ома для участка электрической цепи. Последовательное и параллельное соединения проводников",on_click=lambda _: page.go("/elect/omalaw"))
     el_8 = ft.TextButton("8. Работа и мощность электрического тока",on_click=lambda _: page.go("/elect/rabota"))
     el_9 = ft.TextButton("9. Закон Джоуля – Ленца",on_click=lambda _: page.go("/elect/joullaw"))
@@ -108,7 +103,7 @@ def main(page: ft.Page):
     def route_change(route):
         page.views.clear()
         if page.route == "/":
-            print(str(page.client_ip) + " went to /")
+            
             page.views.append(
             ft.View(
                 "/",
@@ -123,7 +118,7 @@ def main(page: ft.Page):
             )
         )
         elif page.route == "/mech":
-            print(str(page.client_ip) + " went to /mech")
+            
             page.views.append(
                 ft.View(
                     "/mech",
@@ -160,7 +155,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/mech/movement":
-            print(str(page.client_ip) + " went to /mech/movement")
+            
             page.views.append(
                 ft.View(
                     "/mech/movement",
@@ -182,7 +177,7 @@ def main(page: ft.Page):
 
 
         elif page.route == "/heat":
-            print(str(page.client_ip) + " went to /heat")
+            
             page.views.append(
                 ft.View(
                     "/heat",
@@ -205,7 +200,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/bodies":
-            print(str(page.client_ip) + " went to /heat/bodies")
+            
             page.views.append(
                 ft.View(
                     "/heat/bodies",
@@ -231,7 +226,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/diffusion":
-            print(str(page.client_ip) + " went to /heat/diffusion")
+            
             page.views.append(
                 ft.View(
                     "/heat/diffusion",
@@ -246,7 +241,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/equality":
-            print(str(page.client_ip) + " went to /heat/equality")
+            
             page.views.append(
                 ft.View(
                     "/heat/equality",
@@ -259,7 +254,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/energy":
-            print(str(page.client_ip) + " went to /heat/energy")
+            
             page.views.append(
                 ft.View(
                     "/heat/energy",
@@ -277,7 +272,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/transfer":
-            print(str(page.client_ip) + " went to /heat/transfer")
+            
             page.views.append(
                 ft.View(
                     "/heat/transfer",
@@ -295,7 +290,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/quantity":
-            print(str(page.client_ip) + " went to /heat/quantity")
+            
             page.views.append(
                 ft.View(
                     "/heat/quantity",
@@ -310,7 +305,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/saveenergylaw":
-            print(str(page.client_ip) + " went to /heat/saveenergylaw")
+            
             page.views.append(
                 ft.View(
                     "/heat/saveenergylaw",
@@ -325,7 +320,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/steam":
-            print(str(page.client_ip) + " went to /heat/steam")
+            
             page.views.append(
                 ft.View(
                     "/heat/steam",
@@ -341,7 +336,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/humidity":
-            print(str(page.client_ip) + " went to /heat/humidity")
+            
             page.views.append(
                 ft.View(
                     "/heat/humidity",
@@ -356,7 +351,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/smelting":
-            print(str(page.client_ip) + " went to /heat/smelting")
+            
             page.views.append(
                 ft.View(
                     "/heat/smelting",
@@ -369,7 +364,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/heat/magic":
-            print(str(page.client_ip) + " went to /heat/magic")
+            
             page.views.append(
                 ft.View(
                     "/heat/magic",
@@ -386,7 +381,7 @@ def main(page: ft.Page):
                         ft.Text("4. ВЫПУСК Поршень поднимается вверх, клапан 2 открывается и газы покидают цилиндр. Цикл нацинается заново."),
                         ft.Image(src=f"he_11_2.png"),
                         ft.Text("Паровые турбины",size=20),
-                        ft.Text("Поток пара направляется на лопатки(3), толькая их, и вращая диск 4, на вале 5."),
+                        ft.Text("Поток пара направляется на лопатки(3), толкая их, и вращая диск 4, на вале 5."),
                         ft.Image(src=f"he_11_3.png"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/heat")),
                     ],
@@ -396,7 +391,7 @@ def main(page: ft.Page):
 
 
         elif page.route == "/elect":
-            print(str(page.client_ip) + " went to /elect")
+            
             page.views.append(
                 ft.View(
                     "/elect",
@@ -427,10 +422,261 @@ def main(page: ft.Page):
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
+        elif page.route == "/elect/electrification":
+            page.views.append(
+                ft.View(
+                    "/elect/electrification",
+                    [
+                        ft.AppBar(title=ft.Text("Электризация тел"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Электрификация тел - передача телу электрического заряда."),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/charges":
+            page.views.append(
+                ft.View(
+                    "/elect/charges",
+                    [
+                        ft.AppBar(title=ft.Text("Два вида электрических зарядов. Взаимодействие электрических зарядов"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text(
+                            "Есть два вида зарядов: положительный(+) и отрицательный(-).Одноименные заряды отталкиваются (+ и +; - и -), а разных знаков притягиваются."),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/electrosavelaw":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/electrosavelaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон сохранения электрического заряда"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("В электрически изолированной системе при любиых процессах суммарный электрический заряд остаётся постоянным"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/field":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/field",
+                    [
+                        ft.AppBar(title=ft.Text("Электрическое поле. Действие электрического поля на электрические заряды. Проводники и диэлектрики"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Электрическое поле — вид материи, который окружает каждый электрический заряд, а также возникает при наличии изменяющегося во времени магнитного поля, и оказывает силовое воздействие на все покоящиеся заряды, притягивая или отталкивая их"),
+                        ft.Text("Проводники - тела, хорошо проводящие электрический ток"),
+                        ft.Text("Диэлектрики - тела не пропускающие электрический ток"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/tok":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/tok",
+                    [
+                        ft.AppBar(title=ft.Text("Постоянный электрический ток. Сила тока. Напряжение"), bgcolor=ft.colors.SURFACE_VARIANT),
 
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/resistance":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/resistance",
+                    [
+                        ft.AppBar(title=ft.Text("Электрическое сопротивление"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/omalaw":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/omalaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон Ома для участка электрической цепи. Последовательное и параллельное соединения проводников"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/rabota":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/rabota",
+                    [
+                        ft.AppBar(title=ft.Text("Работа и мощность электрического тока"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/joullaw":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/joullaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон Джоуля – Ленца"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/ertedexper":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/ertedexper",
+                    [
+                        ft.AppBar(title=ft.Text("Опыт Эрстеда. Магнитное поле тока"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/magnets":
+            
+            page.views.append(
+                ft.View(
+                    "/elect/magnets",
+                    [
+                        ft.AppBar(title=ft.Text("Взаимодействие магнитов"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/magneticvstok":
+            page.views.append(
+                ft.View(
+                    "/elect/magneticvstok",
+                    [
+                        ft.AppBar(title=ft.Text("Действие магнитного поля на проводник с током"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/faradayexper":
+            page.views.append(
+                ft.View(
+                    "/elect/faradayexper",
+                    [
+                        ft.AppBar(title=ft.Text("Электромагнитная индукция. Опыты Фарадея"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/waves":
+            page.views.append(
+                ft.View(
+                    "/elect/waves",
+                    [
+                        ft.AppBar(title=ft.Text("Электромагнитные колебания и волны"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/lightlaw":
+            page.views.append(
+                ft.View(
+                    "/elect/lightlaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон прямолинейного распространения света"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/ricoshetlaw":
+            page.views.append(
+                ft.View(
+                    "/elect/ricoshetlaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон отражения света. Плоское зеркало"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/prelomlenie":
+            page.views.append(
+                ft.View(
+                    "/elect/prelomlenie",
+                    [
+                        ft.AppBar(title=ft.Text("Преломление света"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/distersia":
+            page.views.append(
+                ft.View(
+                    "/elect/distersia",
+                    [
+                        ft.AppBar(title=ft.Text("Дисперсия света"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/lense":
+            page.views.append(
+                ft.View(
+                    "/elect/lense",
+                    [
+                        ft.AppBar(title=ft.Text("Линза. Фокусное расстояние линзы"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/elect/eye":
+            page.views.append(
+                ft.View(
+                    "/elect/eye",
+                    [
+                        ft.AppBar(title=ft.Text("Глаз как оптическая система. Оптические приборы"), bgcolor=ft.colors.SURFACE_VARIANT),
+
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
 
         elif page.route == "/kvant":
-            print(str(page.client_ip) + " went to /kvant")
+            
             page.views.append(
                 ft.View(
                     "/kvant",
@@ -446,7 +692,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/rad":
-            print(str(page.client_ip) + " went to /rad")
+            
             page.views.append(
                 ft.View(
                     "/kvant/rad",
@@ -463,7 +709,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/atom":
-            print(str(page.client_ip) + " went to /kvant/atom")
+            
             page.views.append(
                 ft.View(
                     "/kvant/atom",
@@ -485,7 +731,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/insideatom":
-            print(str(page.client_ip) + " went to /kvant/insideatom")
+            
             page.views.append(
                 ft.View(
                     "/kvant/insideatom",
@@ -504,7 +750,7 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/kvant/nuclear":
-            print(str(page.client_ip) + " went to /kvant/nuclear")
+            
             page.views.append(
                 ft.View(
                     "/kvant/nuclear",
@@ -521,7 +767,6 @@ def main(page: ft.Page):
                 )
             )
         else:
-            print(str(page.client_ip) + " got 404 when tried to get to " + page.route)
             page.views.append(
                 ft.View(
                     "/404",
@@ -537,7 +782,6 @@ def main(page: ft.Page):
 
         '''
         elif page.route == "/name":
-            print(str(page.client_ip) + " went to /name")
             page.views.append(
                 ft.View(
                     "/name",
