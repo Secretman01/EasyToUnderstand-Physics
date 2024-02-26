@@ -13,6 +13,9 @@ Flet 0.19.0+
 Документация flet
 https://flet.dev/docs/
 
+Это приложение расположено на
+https://easytounderstand.pages.dev/
+
 Это же приложение на Github:
 https://github.com/Secretman01/EasyToUnderstand-Physics
 
@@ -20,16 +23,20 @@ https://github.com/Secretman01/EasyToUnderstand-Physics
 '''
 
 #Конфигурация
-port = 7000 #Порт для приложения
+port = 7000 #Порт для приложения, работает только при запуске app.py без параметров
 
 
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
+    version = "Open Beta 0.7"
+    lastupdate = "Добавлен новый раздел 'версия', в нем будет показана текущая версия проэкта, и что было добавлено и/или измененно. Удалено пару лишних тем из механических явлений и электромагнитных явлений. Раздел Электрических явлений готов, однако требует дополнительных изображений и пояснений"
 
-    th_mech = ft.TextButton("1. Механические явления",on_click=lambda _: page.go("/mech"))
+
+    th_mech = ft.TextButton("1. Механические явления (В разработке)",on_click=lambda _: page.go("/mech"))
     th_heat = ft.TextButton("2. Тепловые явления",on_click=lambda _: page.go("/heat"))
     th_elect = ft.TextButton("3. Электромагнитные явления",on_click=lambda _: page.go("/elect"))
     th_kvant = ft.TextButton("4. Квантовые явления",on_click=lambda _: page.go("/kvant"))
+    th_version = ft.TextButton("Версия",on_click=lambda _: page.go("/version"))
 
     #Механические явления
     me_1 = ft.TextButton("1. Механическое движение. Траектория. Путь. Перемещение",on_click=lambda _: page.go("/mech/movement"))
@@ -53,10 +60,6 @@ def main(page: ft.Page):
     me_19 = ft.TextButton("19. Кинетическая энергия. Потенциальная энергия",on_click=lambda _: page.go("/mech/energy"))
     me_20 = ft.TextButton("20. Закон сохранения механической энергии",on_click=lambda _: page.go("/mech/energysavelaw"))
     me_21 = ft.TextButton("21. Простые механизмы. КПД простых механизмов",on_click=lambda _: page.go("/mech/kpd"))
-    me_22 = ft.TextButton("22. Давление. Атмосферное давление",on_click=lambda _: page.go("/mech/pressure"))
-    me_23 = ft.TextButton("23. Закон Паскаля",on_click=lambda _: page.go("/mech/pascallaw"))
-    me_24 = ft.TextButton("24. Закон Архимеда",on_click=lambda _: page.go("/mech/archimedeslaw"))
-    me_25 = ft.TextButton("25. Механические колебания и волны. Звук",on_click=lambda _: page.go("/mech/waves"))
 
     #Тепловые явления
     he_1 = ft.TextButton("1. Строение вещества. Модели строения газа, жидкости и твердого тела",on_click=lambda _: page.go("/heat/bodies"))
@@ -86,12 +89,6 @@ def main(page: ft.Page):
     el_12 = ft.TextButton("12. Действие магнитного поля на проводник с током",on_click=lambda _: page.go("/elect/magneticvstok"))
     el_13 = ft.TextButton("13. Электромагнитная индукция. Опыты Фарадея",on_click=lambda _: page.go("/elect/faradayexper"))
     el_14 = ft.TextButton("14. Электромагнитные колебания и волны",on_click=lambda _: page.go("/elect/waves"))
-    el_15 = ft.TextButton("15. Закон прямолинейного распространения света",on_click=lambda _: page.go("/elect/lightlaw"))
-    el_16 = ft.TextButton("16. Закон отражения света. Плоское зеркало",on_click=lambda _: page.go("/elect/ricoshetlaw"))
-    el_17 = ft.TextButton("17. Преломление света",on_click=lambda _: page.go("/elect/prelomlenie"))
-    el_18 = ft.TextButton("18. Дисперсия света",on_click=lambda _: page.go("/elect/distersia"))
-    el_19 = ft.TextButton("19. Линза. Фокусное расстояние линзы",on_click=lambda _: page.go("/elect/lense"))
-    el_20 = ft.TextButton("20. Глаз как оптическая система. Оптические приборы",on_click=lambda _: page.go("/elect/eye"))
 
     #Квантовые явления
     kv_1 = ft.TextButton("1. Радиоактивность. Альфа-, бета-, гамма-излучения",on_click=lambda _: page.go("/kvant/rad"))
@@ -103,7 +100,6 @@ def main(page: ft.Page):
     def route_change(route):
         page.views.clear()
         if page.route == "/":
-            
             page.views.append(
             ft.View(
                 "/",
@@ -113,10 +109,29 @@ def main(page: ft.Page):
                     th_heat,
                     th_elect,
                     th_kvant,
+                    th_version,
                 ],
                 scroll=ft.ScrollMode.ADAPTIVE
             )
         )
+
+        elif page.route == "/version":
+            page.views.append(
+                ft.View(
+                    "/version",
+                    [
+                        ft.AppBar(title=ft.Text("Версия"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Это веб приложение находится на ранних этапах разработки. Весь материал основан на учебниках по физике Перышкина и Иванова 8 и 9 классов. Связатся с автором можно по электронной почте secretman@internet.ru"),
+                        ft.TextButton("Назад", on_click=lambda _: page.go("/")),
+                        ft.Text("Текущая версия: "+version),
+                        ft.Text(lastupdate),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+
+
+
         elif page.route == "/mech":
             
             page.views.append(
@@ -145,10 +160,6 @@ def main(page: ft.Page):
                         me_19,
                         me_20,
                         me_21,
-                        me_22,
-                        me_23,
-                        me_24,
-                        me_25,
                         ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -411,12 +422,6 @@ def main(page: ft.Page):
                         el_12,
                         el_13,
                         el_14,
-                        el_15,
-                        el_16,
-                        el_17,
-                        el_18,
-                        el_19,
-                        el_20,
                         ft.TextButton("К главам", on_click=lambda _: page.go("/")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -454,7 +459,7 @@ def main(page: ft.Page):
                     "/elect/electrosavelaw",
                     [
                         ft.AppBar(title=ft.Text("Закон сохранения электрического заряда"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.Text("В электрически изолированной системе при любиых процессах суммарный электрический заряд остаётся постоянным"),
+                        ft.Text("В электрически изолированной системе при любых процессах суммарный электрический заряд остаётся постоянным"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -482,7 +487,11 @@ def main(page: ft.Page):
                     "/elect/tok",
                     [
                         ft.AppBar(title=ft.Text("Постоянный электрический ток. Сила тока. Напряжение"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Ток - упорядочное движение частиц. Постоянный ток - ток не меняющий своего направления и величины."),
+                        ft.Text("Сила тока (I) - отношение электрического заряда ко времени его прохождения через поперечное сечение. Измеряется в Амперах(А), прибор для измерения - Амперметр"),
+                        ft.Image(src=f"el_5_1"),
+                        ft.Text("Напряжение (U) - отношение работы электрического поля по перемещению элекрического заряда между двумя точками цепи к этому заряду измеряеться в Вольтах(В), прибор для измерения - Вольтметр"),
+                        ft.Image(src=f"el_5_2"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -495,7 +504,7 @@ def main(page: ft.Page):
                     "/elect/resistance",
                     [
                         ft.AppBar(title=ft.Text("Электрическое сопротивление"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Сопротивление (R) - отношение напряжения на концах проводника к силе тока, проходящему по нему. Измеряеться в Омах(Ом)"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -508,7 +517,9 @@ def main(page: ft.Page):
                     "/elect/omalaw",
                     [
                         ft.AppBar(title=ft.Text("Закон Ома для участка электрической цепи. Последовательное и параллельное соединения проводников"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Сила тока на участке цепи прямо пропорциональна напряжению на концах этого участка и обратно пропорциональна сопротивлению участка"),
+                        ft.Text(""),
+                        ft.Image(src=f"el_8_1.png"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -521,7 +532,8 @@ def main(page: ft.Page):
                     "/elect/rabota",
                     [
                         ft.AppBar(title=ft.Text("Работа и мощность электрического тока"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Работа электрического тока (A) - произведение напряжения на концах этого участка, силы тока и времени прохождения тока. Измеряется в джоулях(ДЖ)"),
+                        ft.Text("Мощность электрического тока (P) - произведение напряжения и силы тока в цепи. Измеряется в ватт (Вт)"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -534,20 +546,20 @@ def main(page: ft.Page):
                     "/elect/joullaw",
                     [
                         ft.AppBar(title=ft.Text("Закон Джоуля – Ленца"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Количество теплоты,выделяемое при прохождении тока в проводнике, равно произведению квадрата силы тока, сопротивления проводника и времени прохождения тока."),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
                 )
             )
         elif page.route == "/elect/ertedexper":
-            
             page.views.append(
                 ft.View(
                     "/elect/ertedexper",
                     [
                         ft.AppBar(title=ft.Text("Опыт Эрстеда. Магнитное поле тока"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Магнитное поле - воображаемое поле возле движущихся зарядов оказывающее влияние только на другие движущиеся заряды"),
+                        #todo опыт эрстеда
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -560,7 +572,7 @@ def main(page: ft.Page):
                     "/elect/magnets",
                     [
                         ft.AppBar(title=ft.Text("Взаимодействие магнитов"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Магниты отталкиваются и притягиваются от/к друг друга в зависимости от зарядов стороны магнитов (обычно сторона с отрецательным зарядом синяя, а с положительным - красная. Красный будет отталкивать красную сторону другого магнита, но притягивать синую сторону)"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -572,7 +584,7 @@ def main(page: ft.Page):
                     "/elect/magneticvstok",
                     [
                         ft.AppBar(title=ft.Text("Действие магнитного поля на проводник с током"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Image(src=f"el_12_1"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -584,7 +596,7 @@ def main(page: ft.Page):
                     "/elect/faradayexper",
                     [
                         ft.AppBar(title=ft.Text("Электромагнитная индукция. Опыты Фарадея"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Модуль магнитной индукции B - отношение модулю силы Fмакс, с которой магнитное поле действует на расположенный перпендикулярно магнитным линиям проводник с током, к силе тока I в проводнике и его длине  l"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -596,79 +608,7 @@ def main(page: ft.Page):
                     "/elect/waves",
                     [
                         ft.AppBar(title=ft.Text("Электромагнитные колебания и волны"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/lightlaw":
-            page.views.append(
-                ft.View(
-                    "/elect/lightlaw",
-                    [
-                        ft.AppBar(title=ft.Text("Закон прямолинейного распространения света"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/ricoshetlaw":
-            page.views.append(
-                ft.View(
-                    "/elect/ricoshetlaw",
-                    [
-                        ft.AppBar(title=ft.Text("Закон отражения света. Плоское зеркало"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/prelomlenie":
-            page.views.append(
-                ft.View(
-                    "/elect/prelomlenie",
-                    [
-                        ft.AppBar(title=ft.Text("Преломление света"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/distersia":
-            page.views.append(
-                ft.View(
-                    "/elect/distersia",
-                    [
-                        ft.AppBar(title=ft.Text("Дисперсия света"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/lense":
-            page.views.append(
-                ft.View(
-                    "/elect/lense",
-                    [
-                        ft.AppBar(title=ft.Text("Линза. Фокусное расстояние линзы"), bgcolor=ft.colors.SURFACE_VARIANT),
-
-                        ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
-                    ],
-                    scroll=ft.ScrollMode.ADAPTIVE
-                )
-            )
-        elif page.route == "/elect/eye":
-            page.views.append(
-                ft.View(
-                    "/elect/eye",
-                    [
-                        ft.AppBar(title=ft.Text("Глаз как оптическая система. Оптические приборы"), bgcolor=ft.colors.SURFACE_VARIANT),
-
+                        ft.Text("Электромагнитные волны – это распространяющиеся в пространстве электромагнитные колебания. Они поперечны, то есть векторы и перпендикулярны и друг другу, и направлению распространения волны. Скорость распространения электромагнитных волн в вакууме c (скорость света) – это мировая константа: c = 2,9979·108 м/с."),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE

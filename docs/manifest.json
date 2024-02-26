@@ -1,6 +1,6 @@
 {
-    "name": "easytounderstand_physics",
-    "short_name": "easytounderstand_physics",
+    "name": "build",
+    "short_name": "build",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
