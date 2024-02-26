@@ -489,9 +489,9 @@ def main(page: ft.Page):
                         ft.AppBar(title=ft.Text("Постоянный электрический ток. Сила тока. Напряжение"), bgcolor=ft.colors.SURFACE_VARIANT),
                         ft.Text("Ток - упорядочное движение частиц. Постоянный ток - ток не меняющий своего направления и величины."),
                         ft.Text("Сила тока (I) - отношение электрического заряда ко времени его прохождения через поперечное сечение. Измеряется в Амперах(А), прибор для измерения - Амперметр"),
-                        ft.Image(src=f"el_5_1"),
-                        ft.Text("Напряжение (U) - отношение работы электрического поля по перемещению элекрического заряда между двумя точками цепи к этому заряду измеряеться в Вольтах(В), прибор для измерения - Вольтметр"),
-                        ft.Image(src=f"el_5_2"),
+                        ft.Image(src=f"el_5_1.png"),
+                        ft.Text("Напряжение (U) - отношение работы электрического поля по перемещению электрического заряда между двумя точками цепи к этому заряду измеряеться в Вольтах(В), прибор для измерения - Вольтметр"),
+                        ft.Image(src=f"el_5_2.png"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -519,7 +519,7 @@ def main(page: ft.Page):
                         ft.AppBar(title=ft.Text("Закон Ома для участка электрической цепи. Последовательное и параллельное соединения проводников"), bgcolor=ft.colors.SURFACE_VARIANT),
                         ft.Text("Сила тока на участке цепи прямо пропорциональна напряжению на концах этого участка и обратно пропорциональна сопротивлению участка"),
                         ft.Text(""),
-                        ft.Image(src=f"el_8_1.png"),
+                        ft.Image(src=f"el_8_1.jpg"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
@@ -584,7 +584,7 @@ def main(page: ft.Page):
                     "/elect/magneticvstok",
                     [
                         ft.AppBar(title=ft.Text("Действие магнитного поля на проводник с током"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.Image(src=f"el_12_1"),
+                        ft.Image(src=f"el_12_1.png"),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/elect")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
