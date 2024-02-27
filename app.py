@@ -19,7 +19,7 @@ https://easytounderstand.pages.dev/
 Это же приложение на Github:
 https://github.com/Secretman01/EasyToUnderstand-Physics
 
-Учебный материал взят из учебников по физике Перышкина и Иванова 8 и 9 классов
+Учебный материал взят из учебников по физике Перышкина и Иванова 7, 8 и 9 классов
 '''
 
 #Конфигурация
@@ -28,11 +28,11 @@ port = 7000 #Порт для приложения, работает только
 
 def main(page: ft.Page):
     page.title = "Легко Понять: Физика"
-    version = "Open Beta 0.7"
-    lastupdate = "Добавлен новый раздел 'версия', в нем будет показана текущая версия проэкта, и что было добавлено и/или измененно. Удалено пару лишних тем из механических явлений и электромагнитных явлений. Раздел Электрических явлений готов, однако требует дополнительных изображений и пояснений"
+    version = "Open Beta 0.8.5"
+    lastupdate = "Доделал механические явления."
 
 
-    th_mech = ft.TextButton("1. Механические явления (В разработке)",on_click=lambda _: page.go("/mech"))
+    th_mech = ft.TextButton("1. Механические явления",on_click=lambda _: page.go("/mech"))
     th_heat = ft.TextButton("2. Тепловые явления",on_click=lambda _: page.go("/heat"))
     th_elect = ft.TextButton("3. Электромагнитные явления",on_click=lambda _: page.go("/elect"))
     th_kvant = ft.TextButton("4. Квантовые явления",on_click=lambda _: page.go("/kvant"))
@@ -40,7 +40,7 @@ def main(page: ft.Page):
 
     #Механические явления
     me_1 = ft.TextButton("1. Механическое движение. Траектория. Путь. Перемещение",on_click=lambda _: page.go("/mech/movement"))
-    me_2 = ft.TextButton("2. Равномерное прямолинейное движение",on_click=lambda _: page.go("/mech/speed"))
+    me_2 = ft.TextButton("2. Равномерное прямолинейное движение",on_click=lambda _: page.go("/mech/speedpam"))
     me_3 = ft.TextButton("3. Скорость",on_click=lambda _: page.go("/mech/speed"))
     me_4 = ft.TextButton("4. Ускорение",on_click=lambda _: page.go("/mech/acsell"))
     me_5 = ft.TextButton("5. Равноускоренное прямолинейное движение",on_click=lambda _: page.go("/mech/ravnouscormove"))
@@ -121,7 +121,7 @@ def main(page: ft.Page):
                     "/version",
                     [
                         ft.AppBar(title=ft.Text("Версия"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.Text("Это веб приложение находится на ранних этапах разработки. Весь материал основан на учебниках по физике Перышкина и Иванова 8 и 9 классов. Связатся с автором можно по электронной почте secretman@internet.ru"),
+                        ft.Text("Это веб приложение находится на ранних этапах разработки. Весь материал основан на учебниках по физике Перышкина и Иванова 7, 8 и 9 классов. Связатся с автором можно по электронной почте secretman@internet.ru"),
                         ft.TextButton("Назад", on_click=lambda _: page.go("/")),
                         ft.Text("Текущая версия: "+version),
                         ft.Text(lastupdate),
@@ -166,7 +166,6 @@ def main(page: ft.Page):
                 )
             )
         elif page.route == "/mech/movement":
-            
             page.views.append(
                 ft.View(
                     "/mech/movement",
@@ -180,6 +179,262 @@ def main(page: ft.Page):
                         ft.Text("Путь - длина траектории, измеряеться в метрах"),
                         ft.Text("Перемещение - вектор, проведенный из начальной в конечную точку движения. На рисунке отмечен зеленым цветом"),
                         ft.Image(src=f"me_1_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/speedpam":
+            page.views.append(
+                ft.View(
+                    "/mech/speedpam",
+                    [
+                        ft.AppBar(title=ft.Text("Равномерное прямолинейное движение"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Скорость равномерного прямолинейного движения - постоянная векторная величина, равная отношению перемещения тела за любой промежуток времени к значению этого промежутка. "),
+                        ft.Image(src=f"me_2_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/speed":
+            page.views.append(
+                ft.View(
+                    "/mech/speed",
+                    [
+                        ft.AppBar(title=ft.Text("Скорость"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Скорость - путь пройденный телом в единицу времени"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/acsell":
+            page.views.append(
+                ft.View(
+                    "/mech/acsell",
+                    [
+                        ft.AppBar(title=ft.Text("Ускорение"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Ускорение (при равноускоренном джижении) - векторная величина, равная отношению изменения скорости к промежутку времени, за который это изменение произошло"),
+                        ft.Image(src=f"me_4_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/ravnouscormove":
+            page.views.append(
+                ft.View(
+                    "/mech/ravnouscormove",
+                    [
+                        ft.AppBar(title=ft.Text("Равноускоренное прямолинейное движение"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("На картинке ниже, S - проекция вектора перемещения тела, а х - положение в любой момент времени"),
+                        ft.Image(src=f"me_5_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/freefall":
+            page.views.append(
+                ft.View(
+                    "/mech/freefall",
+                    [
+                        ft.AppBar(title=ft.Text("Свободное падение"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Свободное падение - движение тел под действием только силы тяжести. Вычисляется по формулам равноускоренного движения, заменяя а на g"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/cirlemove":
+            page.views.append(
+                ft.View(
+                    "/mech/cirlemove",
+                    [
+                        ft.AppBar(title=ft.Text("Движение по окружности"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("T - время 1 оборота; v - модуль скорости(линейная скорость); ω(омега) - угловая скорость; a - центростремительное ускорение"),
+                        ft.Image(src="me_7_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/mass":
+            page.views.append(
+                ft.View(
+                    "/mech/mass",
+                    [
+                        ft.AppBar(title=ft.Text("Масса. Плотность вещества"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Масса - мера инертности(свойство менять свою скорость при взаимодействии) тела"),
+                        ft.Text("Плотность - отношение массы к объёму"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/strenth":
+            page.views.append(
+                ft.View(
+                    "/mech/strenth",
+                    [
+                        ft.AppBar(title=ft.Text("Сила. Сложение сил"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Сила - величина, характеризующая действие одного тела на другое."),
+                        ft.Text("Сложение сил происходит по правилам сложения векторов(поскольку силы это векторные величины)"),
+                        ft.Image(src=f"me_9_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/firstlaw":
+            page.views.append(
+                ft.View(
+                    "/mech/firstlaw",
+                    [
+                        ft.AppBar(title=ft.Text("Инерция. Первый закон Ньютона"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Первый закон Ньютона: 'Существуют такие системы отчёта, относительно которых тела сохраняют свою скорость неизменной(по модулю и направлению), если на них не действуют другие тела или действия других тел компенсируется'"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/secoundlaw":
+            page.views.append(
+                ft.View(
+                    "/mech/secoundlaw",
+                    [
+                        ft.AppBar(title=ft.Text("Второй закон Ньютона"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Второй закон Ньютона: 'Ускорение тела прямо пропорционально равнодействующей сил, приложенных к телу,и обратно пропорционально его массе'"),
+                        ft.Image(src=f"me_11_1.png"),
+                        ft.Text("Принцип суперпозиции сил: при одновременном действии сил, тело получает такое же ускорение, какое оно получает под действием одной силы, равной векторной сумме данных сил"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/thirdlaw":
+            page.views.append(
+                ft.View(
+                    "/mech/thirdlaw",
+                    [
+                        ft.AppBar(title=ft.Text("Третий закон Ньютона"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Третий закон Ньютона: силы с которыми вда тела действуют друг на другаЮ равны по модулю и противоположны по направлению"),
+                        ft.Image(src=f"me_12_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/friction":
+            page.views.append(
+                ft.View(
+                    "/mech/friction",
+                    [
+                        ft.AppBar(title=ft.Text("Сила трения"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Наибольшее значние силы трения, при котором скольжение ещё не началось, называют максимальной силой трения покоя."),
+                        ft.Image(src=f"me_13_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/uprugost":
+            page.views.append(
+                ft.View(
+                    "/mech/uprugost",
+                    [
+                        ft.AppBar(title=ft.Text("Сила упругости"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Закон Гука: Возникающая при деформации тела сила упругости прямо пропорциональна удлинению тела"),
+                        ft.Image(src=f"me_14_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/tajest":
+            page.views.append(
+                ft.View(
+                    "/mech/tajest",
+                    [
+                        ft.AppBar(title=ft.Text("Закон всемирного тяготения. Сила тяжести"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Закон всемирного тяготения: два любых тела притягиваются друг к другу с силой, прямо проциональной произведению масс тел и обратно пропорционально квадрату расстояния между ними."),
+                        ft.Image(src=f"me_15_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/impulse":
+            page.views.append(
+                ft.View(
+                    "/mech/impulse",
+                    [
+                        ft.AppBar(title=ft.Text("Импульс тела"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Импульсом тела (P) называют векторную величину, равну произведению массы тела на его скорость"),
+                        ft.Image(src=f"me_16_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/saveimpulselaw":
+            page.views.append(
+                ft.View(
+                    "/mech/saveimpulselaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон сохранения импульса"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("векторная сумма импульсов тел, составляющих замкнутую систему, не меняется с течением времени (сохраняется) при любых движениях и взаимодействиях тел системы"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/mechwork":
+            page.views.append(
+                ft.View(
+                    "/mech/mechwork",
+                    [
+                        ft.AppBar(title=ft.Text("Механическая работа и мощность"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Работа постоянной силы при прямолинейном движении тела (A) - физическая величина, равная произведению модулей силы, перемещение и косинуса угла между ними."),
+                        ft.Image(src=f"me_18_1.png"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/energy":
+            page.views.append(
+                ft.View(
+                    "/mech/energy",
+                    [
+                        ft.AppBar(title=ft.Text("Кинетическая энергия. Потенциальная энергия"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Суммарная работа всех сил, действующих на тела системы, равна изменению кинетической энергии этой системы"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/energysavelaw":
+            page.views.append(
+                ft.View(
+                    "/mech/energysavelaw",
+                    [
+                        ft.AppBar(title=ft.Text("Закон сохранения механической энергии"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Механическая энергия замкнутой системы тел остаётся неизменной, если между телами системы действуют только консервативные силы"),
+                        ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
+                    ],
+                    scroll=ft.ScrollMode.ADAPTIVE
+                )
+            )
+        elif page.route == "/mech/kpd":
+            page.views.append(
+                ft.View(
+                    "/mech/kpd",
+                    [
+                        ft.AppBar(title=ft.Text("Простые механизмы. КПД простых механизмов"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        ft.Text("Простые механизмы - приспособления, которые сконструировал и использовал человек, чтобы облегчить работу по перемещению тяжёлых предметов. К ним относят: рычаг, блок, наклонную плоскость. Разновидностями этих механизмов являются: клин, ворот и винт."),
+                        ft.Text("КПД - отношение полезной работы, совершенной механизмом, ко всей затраченной работе (подведенной энергии) за то же время."),
                         ft.TextButton("К главам", on_click=lambda _: page.go("/mech")),
                     ],
                     scroll=ft.ScrollMode.ADAPTIVE
